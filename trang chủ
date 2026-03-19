@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meals & Wheels - Street Food</title>
+    <link rel="stylesheet" href="style-base.css">
+    <link rel="stylesheet" href="style-components.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">MEALS & WHEELS</div>
+                <ul class="nav-links">
+                    <li><a href="#">Trang chủ</a></li>
+                   <a href="2.html">Xem Thực Đơn</a>
+                                            
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 style="text-align: center; margin-top: 50px;">THỰC ĐƠN NỔI BẬT</h2>
+        
+        <div class="food-grid">
+            <div class="food-card">
+                <img src="https://via.placeholder.com/300x200" alt="Burger">
+                <h3>Beef Burger</h3>
+                <span class="price">99.000đ</span>
+                <button class="btn">Thêm vào giỏ</button>
+            </div>
+
+            <div class="food-card">
+                <img src="https://via.placeholder.com/300x200" alt="Pizza">
+                <h3>Classic Pizza</h3>
+                <span class="price">150.000đ</span>
+                <button class="btn">Thêm vào giỏ</button>
+            </div>
+
+            <div class="food-card">
+                <img src="https://via.placeholder.com/300x200" alt="Drink">
+                <h3>Coca Cola</h3>
+                <span class="price">20.000đ</span>
+                <button class="btn">Thêm vào giỏ</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Meals & Wheels. Design by PTIT Students.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
