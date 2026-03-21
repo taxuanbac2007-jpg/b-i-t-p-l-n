@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Menu – MEALS & WHEELS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- HEADER ĐƠN GIẢN -->
+<header>
+  <div class="logo">Meals <span>&</span> Wheels</div>
+  
+  <nav>
+    <a href="index.html" class="back-home">← Trang chủ</a>
+    <a href="#" class="active">Menu</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO ĐƠN GIẢN -->
+<div class="page-hero">
+  <h1><em>THỰC ĐƠN</em></h1>
+  <p>Tươi ngon đến miếng cuối cùng</p>
+</div>
+
+<!-- MENU PAGE CONTENT -->
+<section class="menu-page">
+  <div class="container">
+
+    <!-- FILTER BAR -->
+    <div class="menu-filter-bar">
+      <button class="filter-btn active" onclick="filterMenu(event, 'all')">Tất cả</button>
+      <button class="filter-btn" onclick="filterMenu(event, 'burgers')"> Burgers</button>
+      <button class="filter-btn" onclick="filterMenu(event, 'wraps')"> Bánh cuộn</button>
+      <button class="filter-btn" onclick="filterMenu(event, 'snacks')"> Đồ ăn nhẹ</button>
+      <button class="filter-btn" onclick="filterMenu(event, 'drinks')"> Đồ uống</button>
+      <button class="filter-btn" onclick="filterMenu(event, 'desserts')"> Món tráng miệng</button>
+    </div>
+
+ <!-- BURGERS  -->
+<div class="menu-category" data-cat="burgers">
+  <div class="category-header">
+    <h2 class="category-title"><em>Burger</em></h2>
+    <div class="category-line"></div>
+  </div>
+  <div class="menu-card-grid">
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-7-copyright-120x120.jpg" alt="Fish Burger"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-cat">Burger</div>
+        <div class="menu-card-name">Burger cá chiên</div>
+        <div class="menu-card-desc">Phi lê cá chẽm bỏ da, dưa chuột ngâm nhỏ và bột vụn bánh mì là những nguyên liệu chính. Được phục vụ kèm sốt tartare tự làm tại nhà.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">40.000 VNĐ</div>
+          <button class="menu-card-btn">Đặt ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WRAPS  -->
+<div class="menu-category" data-cat="wraps">
+  <div class="category-header">
+    <h2 class="category-title"> <em>Bánh cuộn</em></h2>
+    <div class="category-line"></div>
+  </div>
+  <div class="menu-card-grid">
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-14-copyright-120x120.jpg" alt="Spicy Wrap"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Bánh cuộn gà cay</div>
+        <div class="menu-card-desc">Gà nướng, sốt sriracha, xà lách tươi, cà chua trong bánh tortilla bột mì nóng.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">20.000 VNĐ</div>
+          <button class="menu-card-btn">Đặt ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SNACKS  -->
+<div class="menu-category" data-cat="snacks">
+  <div class="category-header">
+    <h2 class="category-title"> <em>Đồ ăn nhẹ</em></h2>
+    <div class="category-line"></div>
+  </div>
+  <div class="menu-card-grid">
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-17-copyright-120x120.jpg" alt="Beef Tacos"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Tacos Bò</div>
+        <div class="menu-card-desc">Thịt bò băm, bánh ngô & lúa mì, phô mai, rau củ và sốt đỏ.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">15.000 VNĐ</div>
+          <button class="menu-card-btn">Đặt ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DRINKS  -->
+<div class="menu-category" data-cat="drinks">
+  <div class="category-header">
+    <h2 class="category-title"> <em>Đồ uống</em></h2>
+    <div class="category-line"></div>
+  </div>
+  <div class="menu-card-grid">
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/09/drink-2-copyright-120x120.jpg" alt="Smoothie"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Cà phê đá</div>
+        <div class="menu-card-desc">Phục vụ trong những ngày và đêm hè nóng bức, pha lạnh với đá và sữa.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">10.000 VNĐ</div>
+          <button class="menu-card-btn">Đặt ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DESSERTS  -->
+<div class="menu-category" data-cat="desserts">
+  <div class="category-header">
+    <h2 class="category-title"> <em>Món tráng miệng</em></h2>
+    <div class="category-line"></div>
+  </div>
+  <div class="menu-card-grid">
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-19-copyright-120x120.jpg" alt="Donut"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Bánh cupcake cà rốt</div>
+        <div class="menu-card-desc">Thịt bò băm, thịt xông khói, hành tây, phô mai Thụy Sĩ và bắp cải zucchini hoàn hảo.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">15.000 VNĐ</div>
+          <button class="menu-card-btn">Dặt ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+<!--========Ấn nút chuyển món ăn========-->
+<script>
+  function filterMenu(e, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    const categories = document.querySelectorAll('.menu-category');
+    categories.forEach(c => {
+      if (cat === 'all' || c.dataset.cat === cat) {
+        c.style.display = 'block';
+      } else {
+        c.style.display = 'none';
+      }
+    });
+  }
+</script>
+<!-- ==================== QUAY VỀ TRANG CHỦ ==================== -->
+<div class="back-to-home">
+  <a href="index.html" class="back-home-btn"> ← Quay về Trang chủ</a>
+  <a href="menu.html" class="active">Thực đơn</a>
+</div>
