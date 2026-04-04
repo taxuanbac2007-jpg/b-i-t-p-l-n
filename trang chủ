@@ -1,78 +1,83 @@
 <!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <title>Meals & Wheels - Street Food</title>
-  </head>
+    <link rel="stylesheet" href="trang chu.css">
+</head>
 <body>
-    <header>
-       
-        <center><h1>Meals & WHEELS </h1></center>
-        <br><br>    
-<table>  
- 		<tr>
-            <td>
-                <video width="100%" autoplay muted loop >
-                    <source src="2.mp4">
-                </video>
-            </td>
-            
-            <td>
-                <img src="1.img.png" width="100%" >
-            </td>
-         	<td>
-                <video width="100%" autoplay muted loop >
-                    <source src="2.mp4">
-                </video>
-            </td>
-		</tr>
 
- 	
-</table>                          
+    <header class="tieu-de-trang">
+        <h1>Meals & WHEELS</h1>
+        <p>Hương vị đường phố - Kết nối tâm hồn</p>
     </header>
-    <table width="100%" cellspacing="20">
-  <tr>
-    <td width="50%" valign="top">
-      <h1>STREET FOOD WITH SOUL</h1>
-      <br><br>"Không chỉ là những món ăn đường phố quen thuộc.
-      <br><br>Chúng tôi gom góp tinh hoa của nguyên liệu tươi ngon 
-      <br><br>và gửi gắm vào đó trọn vẹn 'tâm hồn' người nấu
-      <br><br>Để mỗi món ăn là một niềm vui nho nhỏ
-      <br><br>là sợi dây kết nối hạnh phúc đến với bạn"
-      <br><br><button><a href="menu.html">Xem Thực Đơn</a></button>
-    </td>
 
-    <td width="50%">
-      <img src="https://tse3.mm.bing.net/th/id/OIP.ef0gcJpfVDltdCeRgcNH2QHaE8?pid=Api&P=0&h=180" width="45%"> 
-      <img src="https://tse2.mm.bing.net/th/id/OIP.xleZ6w-JLArAFuzkP-GUQgHaD4?pid=Api&P=0&h=180" width="45%">
-      <br>
-      <img src="https://tse1.mm.bing.net/th/id/OIP.oBJdufIeBXaXyzxO8GhPtwHaEo?pid=Api&P=0&h=180" width="65%">
-    </td>
-  </tr>
-    </table>    
-    <br><br>
-    <center><h1> Best food</h1></center>    
-    <br><br>
-    <table  width="100%">
-      <thead>
-          <tr>
-            <th><h3>Beef Burger</h3></th>
-            <th><h3>Tiramisu</h3></th>
-            <th><h3>Americano</h3></th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td>
-                <img src="https://png.pngtree.com/background/20230413/original/pngtree-food-burger-delicious-tempting-background-picture-image_2423373.jpg" width="80%" alt="Burger">
-              </td>
-              <td>
-                <img src="https://img.vietcetera.com/uploads/images/21-jun-2023/6.jpg" width="80%" alt="Tiramisu">
-              </td>
-              <td>
-                <img src="https://tse4.mm.bing.net/th/id/OIP.srTsz6i-CseZNqsYEi9KtQHaE8?pid=Api&P=0&h=180" width="400px" alt="cà phê">
-              </td>
-          </tr>
-      </tbody>
-  </table>
-    </body>
+    <table class="bo-suu-tap-dau-trang">  
+        <tr>
+            <td width="33%">
+                <video autoplay muted loop>
+                    <source src="2.mp4">
+                </video>
+            </td>
+            <td width="34%">
+                <img src="1.img.png" alt="Banner">
+            </td>
+            <td width="33%">
+                <video autoplay muted loop>
+                    <source src="2.mp4">
+                </video>
+            </td>
+        </tr>
+    </table>
+
+    <table class="phan-gioi-thieu" width="100%">
+        <tr>
+            <td class="noi-dung-gioi-thieu" width="50%" valign="top">
+                <h1>STREET FOOD WITH SOUL</h1>
+                <p>Không chỉ là những món ăn đường phố quen thuộc.<br>
+                Chúng tôi gom góp tinh hoa của nguyên liệu tươi ngon<br> 
+                và gửi gắm vào đó trọn vẹn "tâm hồn" người nấu.<br><br>
+                Để mỗi món ăn là một niềm vui nho nhỏ,<br>
+                là sợi dây kết nối hạnh phúc đến với bạn.</p>
+                
+                <button class="nut-bam-menu">
+                    <a href="menu.html">Xem Thực Đơn</a>
+                </button>
+            </td>
+
+            <td class="hinh-anh-gioi-thieu" width="50%">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.ef0gcJpfVDltdCeRgcNH2QHaE8?pid=Api&P=0&h=180" width="45%"> 
+                <img src="https://tse2.mm.bing.net/th/id/OIP.xleZ6w-JLArAFuzkP-GUQgHaD4?pid=Api&P=0&h=180" width="45%">
+                <br>
+                <img src="https://tse1.mm.bing.net/th/id/OIP.oBJdufIeBXaXyzxO8GhPtwHaEo?pid=Api&P=0&h=180" width="92%">
+            </td>
+        </tr>
+    </table>
+
+    <h1 class="tieu-de-mon-ngon">Món Ăn Nổi Bật</h1>    
+    
+    <table class="bang-mon-an">
+        <thead>
+            <tr>
+                <th><h3>Beef Burger</h3></th>
+                <th><h3>Tiramisu</h3></th>
+                <th><h3>Americano</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <img src="https://png.pngtree.com/background/20230413/original/pngtree-food-burger-delicious-tempting-background-picture-image_2423373.jpg" alt="Burger">
+                </td>
+                <td>
+                    <img src="https://img.vietcetera.com/uploads/images/21-jun-2023/6.jpg" alt="Tiramisu">
+                </td>
+                <td>
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.srTsz6i-CseZNqsYEi9KtQHaE8?pid=Api&P=0&h=180" alt="Cà phê">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
 </html>
