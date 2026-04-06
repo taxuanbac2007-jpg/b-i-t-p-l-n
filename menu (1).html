@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thực đơn – MEALS & WHEELS</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── CART BADGE ── */
+    .cart-nav-link { position: relative; display: inline-flex; align-items: center; gap: 6px; }
+    .cart-badge {
+      background: #e03030; color: #fff;
+      font-size: 10px; font-weight: 700;
+      min-width: 18px; height: 18px;
+      border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      padding: 0 4px;
+    }
+    .cart-badge.show { display: inline-flex; }
+
+    /* ── QTY CONTROL trên card ── */
+    .menu-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; }
+    .qty-control { display: flex; align-items: center; gap: 6px; }
+    .qty-control button {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid #e03030;
+      background: transparent;
+      color: #e03030;
+      font-size: 16px; font-weight: 700;
+      cursor: pointer; line-height: 1;
+      transition: background .15s, color .15s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .qty-control button:hover { background: #e03030; color: #fff; }
+    .qty-control .qty-num {
+      min-width: 22px; text-align: center;
+      font-size: 15px; font-weight: 600;
+      font-family: 'Oswald', sans-serif;
+    }
+    .menu-card-btn {
+      padding: 7px 16px;
+      background: #e03030; color: #fff;
+      border: none; border-radius: 4px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: .5px;
+      cursor: pointer; transition: background .2s;
+      white-space: nowrap;
+    }
+    .menu-card-btn:hover { background: #b82222; }
+
+    /* ── FLOATING CART BAR ── */
+    #cartBar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #1a1a1a;
+      border-top: 3px solid #e03030;
+      padding: 14px 24px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 999;
+      font-family: 'Oswald', sans-serif;
+    }
+    #cartBar.show { display: flex; }
+    .cart-bar-info { display: flex; align-items: center; gap: 16px; }
+    .cart-bar-count {
+      background: #e03030; color: #fff;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+    .cart-bar-total {
+      color: #f5c842;
+      font-size: 18px; font-weight: 600;
+      letter-spacing: .5px;
+    }
+    .cart-bar-items {
+      color: #aaa;
+      font-size: 12px;
+      letter-spacing: .3px;
+      max-width: 320px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cart-bar-btn {
+      background: #e03030; color: #fff;
+      border: none; border-radius: 6px;
+      padding: 12px 28px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cart-bar-btn:hover { background: #b82222; }
+    .cart-bar-btn:active { transform: scale(.97); }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 80px; right: 24px;
+      background: #1a1a1a;
+      border-left: 4px solid #e03030;
+      color: #f8f5f0;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: .4px;
+      z-index: 1000;
+      display: flex; align-items: center; gap: 10px;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), opacity .25s ease;
+      pointer-events: none;
+      max-width: 280px;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+    #toast .toast-name { color: #f5c842; font-weight: 600; }
+
+    /* padding bù cho cart bar cố định */
+    body.has-cart { padding-bottom: 72px; }
+
+    /* filter inline style → class */
+    .menu-category { display: block; }
+    .menu-category.hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Meals <span>&</span> Wheels</div>
+  <nav>
+    <a href="index.html">← Trang chủ</a>
+    <a href="menu.html" class="active">Menu</a>
+    <a href="checkout.html" class="cart-nav-link">
+      🛒 Giỏ hàng
+      <span class="cart-badge" id="cartBadge">0</span>
+    </a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1><em>THỰC ĐƠN</em></h1>
+  <p>Tươi ngon đến miếng cuối cùng</p>
+</div>
+
+<section class="menu-page">
+  <div class="container">
+
+    <!-- FILTER BAR -->
+    <div class="menu-filter-bar" id="filterBar">
+      <button class="filter-btn active" data-cat="all">Tất cả</button>
+      <button class="filter-btn" data-cat="burgers">Burgers</button>
+      <button class="filter-btn" data-cat="wraps">Bánh cuộn</button>
+      <button class="filter-btn" data-cat="snacks">Đồ ăn nhẹ</button>
+      <button class="filter-btn" data-cat="drinks">Đồ uống</button>
+      <button class="filter-btn" data-cat="desserts">Món tráng miệng</button>
+    </div>
+
+    <!-- BURGERS -->
+    <div class="menu-category" data-cat="burgers">
+      <div class="category-header">
+        <h2 class="category-title"><em>Burger</em></h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="menu-card-grid">
+
+        <div class="menu-card" data-id="burger-ca-chien">
+          <div class="menu-card-img">
+            <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-7-copyright-120x120.jpg" alt="Burger cá chiên" loading="lazy"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-cat">Burger</div>
+            <div class="menu-card-name">Burger cá chiên</div>
+            <div class="menu-card-desc">Phi lê cá chẽm bỏ da, dưa chuột ngâm nhỏ và bột vụn bánh mì. Phục vụ kèm sốt tartare tự làm.</div>
+            <div class="menu-card-footer">
+              <div class="menu-card-price">40.000 VNĐ</div>
+              <div class="qty-control">
+                <button class="qty-dec" aria-label="Giảm">−</button>
+                <span class="qty-num">0</span>
+                <button class="qty-inc" aria-label="Thêm">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-id="burger-bo-pho-mai">
+          <div class="menu-card-img">
+            <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-8-copyright-120x120.jpg" alt="Burger bò phô mai" loading="lazy"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-cat">Burger</div>
+            <div class="menu-card-name">Burger bò phô mai</div>
+            <div class="menu-card-desc">Thịt bò 100%, phô mai cheddar tan chảy, hành tây caramel và sốt đặc biệt.</div>
+            <div class="menu-card-footer">
+              <div class="menu-card-price">55.000 VNĐ</div>
+              <div class="qty-control">
+                <button class="qty-dec" aria-label="Giảm">−</button>
+                <span class="qty-num">0</span>
+                <button class="qty-inc" aria-label="Thêm">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WRAPS -->
+    <div class="menu-category" data-cat="wraps">
+      <div class="category-header">
+        <h2 class="category-title"><em>Bánh cuộn</em></h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="menu-card-grid">
+
+        <div class="menu-card" data-id="banh-cuon-ga-cay">
+          <div class="menu-card-img">
+            <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-14-copyright-120x120.jpg" alt="Bánh cuộn gà cay" loading="lazy"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Bánh cuộn gà cay</div>
+            <div class="menu-card-desc">Gà nướng, sốt sriracha, xà lách tươi, cà chua trong bánh tortilla bột mì nóng.</div>
+            <div class="menu-card-footer">
+              <div class="menu-card-price">20.000 VNĐ</div>
+              <div class="qty-control">
+                <button class="qty-dec" aria-label="Giảm">−</button>
+                <span class="qty-num">0</span>
+                <button class="qty-inc" aria-label="Thêm">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SNACKS -->
+    <div class="menu-category" data-cat="snacks">
+      <div class="category-header">
+        <h2 class="category-title"><em>Đồ ăn nhẹ</em></h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="menu-card-grid">
+
+        <div class="menu-card" data-id="tacos-bo">
+          <div class="menu-card-img">
+            <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-17-copyright-120x120.jpg" alt="Tacos Bò" loading="lazy"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Tacos Bò</div>
+            <div class="menu-card-desc">Thịt bò băm, bánh ngô & lúa mì, phô mai, rau củ và sốt đỏ.</div>
+            <div class="menu-card-footer">
+              <div class="menu-card-price">15.000 VNĐ</div>
+              <div class="qty-control">
+                <button class="qty-dec" aria-label="Giảm">−</button>
+                <span class="qty-num">0</span>
+                <button class="qty-inc" aria-label="Thêm">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-category" data-cat="drinks">
+      <div class="category-header">
+        <h2 class="category-title"><em>Đồ uống</em></h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="menu-card-grid">
+
+        <div class="menu-card" data-id="ca-phe-da">
+          <div class="menu-card-img">
+            <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/09/drink-2-copyright-120x120.jpg" alt="Cà phê đá" loading="lazy"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Cà phê đá</div>
+            <div class="menu-card-desc">Pha lạnh với đá và sữa, thích hợp cho những ngày hè nóng bức.</div>
+            <div class="menu-card-footer">
+              <div class="menu-card-price">10.000 VNĐ</div>
+              <div class="qty-control">
+                <button class="qty-dec" aria-label="Giảm">−</button>
+                <span class="qty-num">0</span>
+                <button class="qty-inc" aria-label="Thêm">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-id="nuoc-cam-tuoi">
+          <div class="menu-card-img">
+            <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/09/drink-1-copyright-120x120.jpg" alt="Nước cam tươi" loading="lazy"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Nước cam tươi</div>
+            <div class="menu-card-desc">Cam vắt tươi nguyên chất, không đường, mát lạnh.</div>
+            <div class="menu-card-footer">
+              <div class="menu-card-price">18.000 VNĐ</div>
+              <div class="qty-control">
+                <button class="qty-dec" aria-label="Giảm">−</button>
+                <span class="qty-num">0</span>
+                <button class="qty-inc" aria-label="Thêm">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-category" data-cat="desserts">
+      <div class="category-header">
+        <h2 class="category-title"><em>Món tráng miệng</em></h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="menu-card-grid">
+
+        <div class="menu-card" data-id="cupcake-ca-rot">
+          <div class="menu-card-img">
+            <img src="https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-19-copyright-120x120.jpg" alt="Bánh cupcake cà rốt" loading="lazy"/>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Bánh cupcake cà rốt</div>
+            <div class="menu-card-desc">Bánh mềm ẩm từ cà rốt tươi, phủ kem phô mai béo ngậy.</div>
+            <div class="menu-card-footer">
+              <div class="menu-card-price">15.000 VNĐ</div>
+              <div class="qty-control">
+                <button class="qty-dec" aria-label="Giảm">−</button>
+                <span class="qty-num">0</span>
+                <button class="qty-inc" aria-label="Thêm">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FLOATING CART BAR -->
+<div id="cartBar">
+  <div class="cart-bar-info">
+    <span class="cart-bar-count" id="cartBarCount">0 món</span>
+    <div>
+      <div class="cart-bar-total" id="cartBarTotal">0 VNĐ</div>
+      <div class="cart-bar-items" id="cartBarItems"></div>
+    </div>
+  </div>
+  <button class="cart-bar-btn" id="checkoutBtn">Thanh toán →</button>
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+  <span>🛒</span>
+  <span>Đã cập nhật <span class="toast-name" id="toastName"></span></span>
+</div>
+
+<script>
+'use strict';
+
+/* ─── DỮ LIỆU món (id → meta) ─────────────────────────────── */
+const MENU_DATA = {
+  'burger-ca-chien':   { name: 'Burger cá chiên',      price: 40000, img: 'https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-7-copyright-120x120.jpg',  cat: 'Burger' },
+  'burger-bo-pho-mai': { name: 'Burger bò phô mai',    price: 55000, img: 'https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-8-copyright-120x120.jpg',  cat: 'Burger' },
+  'banh-cuon-ga-cay':  { name: 'Bánh cuộn gà cay',     price: 20000, img: 'https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-14-copyright-120x120.jpg', cat: 'Bánh cuộn' },
+  'tacos-bo':          { name: 'Tacos Bò',              price: 15000, img: 'https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-17-copyright-120x120.jpg', cat: 'Đồ ăn nhẹ' },
+  'ca-phe-da':         { name: 'Cà phê đá',             price: 10000, img: 'https://meals-wheels.themerex.net/wp-content/uploads/2018/09/drink-2-copyright-120x120.jpg', cat: 'Đồ uống' },
+  'nuoc-cam-tuoi':     { name: 'Nước cam tươi',         price: 18000, img: 'https://meals-wheels.themerex.net/wp-content/uploads/2018/09/drink-1-copyright-120x120.jpg', cat: 'Đồ uống' },
+  'cupcake-ca-rot':    { name: 'Bánh cupcake cà rốt',   price: 15000, img: 'https://meals-wheels.themerex.net/wp-content/uploads/2018/06/dish-19-copyright-120x120.jpg', cat: 'Tráng miệng' },
+};
+
+/* ─── STATE (localStorage) ─────────────────────────────────── */
+const CART_KEY = 'mw_cart';
+
+function getCart()      { try { return JSON.parse(localStorage.getItem(CART_KEY) || '{}'); } catch { return {}; } }
+function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+
+function setQty(id, qty) {
+  const cart = getCart();
+  if (qty <= 0) delete cart[id];
+  else cart[id] = qty;
+  saveCart(cart);
+  syncUI();
+  showToast(MENU_DATA[id]?.name || '');
+}
+
+function getQty(id) { return getCart()[id] || 0; }
+
+/* ─── SYNC UI ──────────────────────────────────────────────── */
+function syncUI() {
+  const cart  = getCart();
+  let   total = 0, cnt = 0;
+  const names = [];
+
+  /* Cập nhật từng card */
+  document.querySelectorAll('.menu-card[data-id]').forEach(card => {
+    const id  = card.dataset.id;
+    const qty = cart[id] || 0;
+    card.querySelector('.qty-num').textContent = qty;
+
+    /* Highlight card nếu có trong giỏ */
+    card.classList.toggle('in-cart', qty > 0);
+  });
+
+  /* Tính tổng */
+  Object.entries(cart).forEach(([id, qty]) => {
+    const meta = MENU_DATA[id];
+    if (!meta) return;
+    total += meta.price * qty;
+    cnt   += qty;
+    names.push(`${meta.name} ×${qty}`);
+  });
+
+  /* Badge nav */
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = cnt;
+  badge.classList.toggle('show', cnt > 0);
+
+  /* Floating bar */
+  const bar = document.getElementById('cartBar');
+  bar.classList.toggle('show', cnt > 0);
+  document.body.classList.toggle('has-cart', cnt > 0);
+  document.getElementById('cartBarCount').textContent = cnt + ' món';
+  document.getElementById('cartBarTotal').textContent  = total.toLocaleString('vi-VN') + ' VNĐ';
+  document.getElementById('cartBarItems').textContent  = names.join(' · ');
+}
+
+/* ─── TOAST ─────────────────────────────────────────────────── */
+let toastTimer;
+function showToast(name) {
+  document.getElementById('toastName').textContent = name;
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+/* ─── EVENT DELEGATION ──────────────────────────────────────── */
+
+/* Nút +/− trên card */
+document.querySelector('.menu-page').addEventListener('click', e => {
+  const inc  = e.target.closest('.qty-inc');
+  const dec  = e.target.closest('.qty-dec');
+  if (!inc && !dec) return;
+
+  const card = e.target.closest('.menu-card[data-id]');
+  if (!card) return;
+  const id  = card.dataset.id;
+  const qty = getQty(id);
+  setQty(id, inc ? qty + 1 : qty - 1);
+});
+
+/* Filter bar */
+document.getElementById('filterBar').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  const cat = btn.dataset.cat;
+
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.menu-category').forEach(c => {
+    c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat);
+  });
+});
+
+/* Nút Thanh toán → chuyển trang */
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+  window.location.href = 'checkout.html';
+});
+
+/* ─── INIT ───────────────────────────────────────────────────── */
+syncUI();
+</script>
+</body>
+</html>
