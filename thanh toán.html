@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng thành công - Meals & Wheels</title>
+    <link rel="stylesheet" href="success.css">
+</head>
+<body>
+
+    <div class="success-container">
+        <div class="modal">
+            <div class="modal-icon">🎉</div>
+            <h1 class="modal-title">Đặt hàng thành công!</h1>
+            <p class="modal-sub">
+                Cảm ơn bạn đã tin tưởng Meals & Wheels.<br>
+                Chúng tôi đang chuẩn bị đơn hàng của bạn!
+            </p>
+            
+            <div class="modal-order">
+                <span class="modal-order-lbl">Mã đơn hàng</span>
+                <div class="modal-order-num" id="onum">#MW-889911</div>
+                <div class="modal-time">🛵 Dự kiến giao trong <strong>25–35 phút</strong></div>
+            </div>
+
+            <button class="modal-btn" onclick="goHome()">Tiếp tục mua sắm</button>
+        </div>
+    </div>
+
+    <script>
+    function goHome() {
+        // Chuyển hướng về trang thực đơn
+        window.location.href = 'menu.html'; 
+    }
+    </script>
+</body>
+</html>
