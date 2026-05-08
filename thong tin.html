@@ -1,26 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>Trang điền thông tin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang điền thông tin nhận hàng</title>
     <link rel="stylesheet" href="thong tin.css">
 </head>
 <body>
 
-    <h1>Thông Tin Nhận Hàng</h1>
-    <p>Vui lòng điền đầy đủ các thông tin dưới đây:</p>
 
-    <form>
-        <label>Họ và tên:</label><br>
-        <input type="text" name="hoten" ><br><br>
+    <form action="thanh_cong.html" method="GET">
+        <h1>Thông Tin Nhận Hàng</h1>
+        
 
-        <label>Số điện thoại:</label><br>
-        <input type="number" name="sodt" ><br><br>
+        <p class="tieu-de-phu">Vui lòng điền đầy đủ các thông tin dưới đây để chúng tôi giao hàng đến bạn:</p>
+            
 
-        <label>Địa chỉ nhận hàng:</label><br>
-        <textarea name="diachi" rows="4" cols="30" ></textarea><br><br>
+        <label for="ho_ten">Họ và tên <span class="sao-do">*</span>:</label>
+        <input type="text" id="ho_ten" name="ho_ten" placeholder="Nhập họ và tên của bạn" required>
 
-        <input type="submit" value="Gửi thông tin">
-        <input type="reset" value="Xóa hết">
+
+        <label for="so_dien_thoai">Số điện thoại <span class="sao-do">*</span>:</label>
+        <input type="tel" id="so_dien_thoai" name="so_dien_thoai" placeholder="VD: 0912345678" required>
+
+        <label for="dia_chi">Địa chỉ nhận hàng <span class="sao-do">*</span>:</label>
+        <textarea id="dia_chi" name="dia_chi" rows="3" placeholder="Số nhà, tên đường..." required></textarea>
+
+    
+        <label for="ghi_chu">Ghi chú cho người giao hàng:</label>
+        <textarea id="ghi_chu" name="ghi_chu" rows="2" placeholder="Giao giờ hành chính..."></textarea>
+
+    
+        <label for="thanh_toan">Phương thức thanh toán:</label>
+        <select id="thanh_toan" name="thanh_toan">
+            <option value="tien_mat">Thanh toán khi nhận hàng (Tiền mặt)</option>
+            <option value="chuyen_khoan">Chuyển khoản ngân hàng</option>
+        </select>
+
+     
+        <button type="submit" class="nut-gui">Gửi thông tin địa chỉ</button>
+        <button type="reset" class="nut-xoa">Xóa hết</button>
     </form>
 
 </body>
