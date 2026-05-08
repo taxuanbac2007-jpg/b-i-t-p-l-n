@@ -8,11 +8,23 @@
 <body>
 
     <header class="tieu-de-trang">
-        <h1>Meals & WHEELS</h1>
+        <h1>street food</h1>
         <p>Hương vị đường phố - Kết nối tâm hồn</p>
     </header>
 
-    <table class="bo-suu-tap-dau-trang">  
+    <!-- Thanh Điều Hướng (Navigation) -->
+    <nav>
+        <hr>
+        <ul>
+            <li><a href="#">Trang Chủ</a></li>
+            <li><a href="menu.html">Thực Đơn Món Ăn</a></li>
+            <li><a href="#danh-gia">Đánh Giá Khách Hàng</a></li>
+            <li><a href="#lien-he">Thông Tin Liên Hệ</a></li>
+        </ul>
+        <hr>
+    </nav>
+
+    <table class="anh-gioi-thieu">  
         <tr>
             <td width="33%">
                 <video autoplay muted loop>
@@ -49,7 +61,7 @@
                 <img src="https://tse3.mm.bing.net/th/id/OIP.ef0gcJpfVDltdCeRgcNH2QHaE8?pid=Api&P=0&h=180" width="45%"> 
                 <img src="https://tse2.mm.bing.net/th/id/OIP.xleZ6w-JLArAFuzkP-GUQgHaD4?pid=Api&P=0&h=180" width="45%">
                 <br>
-                <img src="https://tse1.mm.bing.net/th/id/OIP.oBJdufIeBXaXyzxO8GhPtwHaEo?pid=Api&P=0&h=180" width="92%">
+                <img src="https://atuankhang.vn/wp-content/uploads/2024/04/z5379754256366_af7d8bb3f08843b2eda69d55e76f41df.jpg" width="92%">
             </td>
         </tr>
     </table>
@@ -78,6 +90,46 @@
             </tr>
         </tbody>
     </table>
+
+    <hr>
+    <h2 id="danh-gia">Khách hàng nói gì về chúng tôi?</h2>
+    <ul>
+        <li>
+            <b>Tom:</b> "Đồ ăn ở đây ngon xỉu, ăn một lần là dính luôn! Tiramisu rất đúng vị."
+        </li>
+        <li>
+            <b>Jerry:</b> "Beef Burger đỉnh cao thật sự, hôm nào đi chơi về đói meo cũng phải tạt qua làm một cái mới ấm bụng."
+        </li>
+    </ul>
+    <hr>
+    <h2 id="lien-he">Thông tin & Giờ mở cửa</h2>
+    <p>Muốn thưởng thức thì phải biết đường mà tìm đến nhé:</p>
+    <ul>
+        <li><b>Địa điểm:</b> Khu vực quanh cổng Học viện PTIT, Hà Nội</li>
+        <li><b>Giờ mở cửa:</b> 08:00 Sáng - 10:00 Tối (Phục vụ xuyên trưa)</li>
+        <li><b>Hotline gọi món:</b> 0123 456 789</li>
+    </ul>
+
+    <hr>
+    <h2>Đăng ký nhận Voucher giảm giá</h2>
+    <p>Để lại thông tin dưới đây nếu muốn nhận ưu đãi cho lần ăn tới:</p>
+    <form action="#" method="POST">
+        <label for="ho-ten">Tên của bạn:</label><br>
+        <input type="text" id="ho-ten" name="ho-ten" placeholder="Nhập tên..." required><br><br>
+
+        <label for="email">Email liên hệ:</label><br>
+        <input type="email" id="email" name="email" placeholder="Nhập email..." required><br><br>
+
+        <label for="gop-y">Món muốn chúng tôi bán thêm:</label><br>
+        <textarea id="gop-y" name="gop-y" rows="4" cols="30" placeholder="Ghi chú vào đây..."></textarea><br><br>
+
+        <button type="submit">Gửi thông tin luôn</button>
+    </form>
+
+       <hr>
+    <footer>
+        <p>Bản quyền © 2026 thuộc về Meals & Wheels. Xin đừng sao chép dưới mọi hình thức.</p>
+    </footer>
 
 </body>
 </html>
