@@ -2,134 +2,323 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Meals & Wheels - Street Food</title>
-    <link rel="stylesheet" href="trang chu.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Meals & Wheels - Hương Vị Đường Phố</title>
+    <link rel="stylesheet" href="trang-chu.css">
 </head>
 <body>
 
-    <header class="tieu-de-trang">
-        <h1>street food</h1>
-        <p>Hương vị đường phố - Kết nối tâm hồn</p>
+    <header class="dau-trang">
+        <div class="bieu-tuong-logo">
+            <h1>Meals & Wheels</h1>
+            <p>Hương vị đường phố - Kết nối tâm hồn</p>
+        </div>
     </header>
 
-    <!-- Thanh Điều Hướng (Navigation) -->
-    <nav>
-        <hr>
-        <ul>
+    <nav class="thanh-dieu-huong">
+        <ul class="danh-sach-menu">
             <li><a href="#">Trang Chủ</a></li>
-            <li><a href="menu.html">Thực Đơn Món Ăn</a></li>
-            <li><a href="#danh-gia">Đánh Giá Khách Hàng</a></li>
-            <li><a href="#lien-he">Thông Tin Liên Hệ</a></li>
+            <li><a href="#cau-chuyen">Câu Chuyện</a></li>
+            <li><a href="#mon-noi-bat">Món Nổi Bật</a></li>
+            <li><a href="#combo-uu-dai">Combo Khuyến Mãi</a></li>
+            <li><a href="#quy-trinh">Quy Trình Clean-Food</a></li>
+            <li><a href="#doi-ngu">Đầu Bếp</a></li>
+            <li><a href="#y-kien-khach">Đánh Giá</a></li>
+            <li><a href="#tin-tuc">Tin Tức</a></li>
+            <li><a href="#thu-vien">Thư Viện Ảnh</a></li>
+            <li><a href="#lien-he">Liên Hệ</a></li>
         </ul>
-        <hr>
     </nav>
 
-    <table class="anh-gioi-thieu">  
-        <tr>
-            <td width="33%">
-                <video autoplay muted loop>
-                    <source src="2.mp4">
-                </video>
-            </td>
-            <td width="34%">
-                <img src="1.img.png" alt="Banner">
-            </td>
-            <td width="33%">
-                <video autoplay muted loop>
-                    <source src="2.mp4">
-                </video>
-            </td>
-        </tr>
-    </table>
+    <main class="noi-dung-chinh">
 
-    <table class="phan-gioi-thieu" width="100%">
-        <tr>
-            <td class="noi-dung-gioi-thieu" width="50%" valign="top">
-                <h1>STREET FOOD WITH SOUL</h1>
-                <p>Không chỉ là những món ăn đường phố quen thuộc.<br>
-                Chúng tôi gom góp tinh hoa của nguyên liệu tươi ngon<br> 
-                và gửi gắm vào đó trọn vẹn "tâm hồn" người nấu.<br><br>
-                Để mỗi món ăn là một niềm vui nho nhỏ,<br>
-                là sợi dây kết nối hạnh phúc đến với bạn.</p>
+        <section class="banner-chinh">
+            <div class="khung-video-trai">
+                <video autoplay muted loop playsinline><source src="2.mp4" type="video/mp4"></video>
+            </div>
+            <div class="khung-anh-giua">
+                <img src="1.img.png" alt="Banner chính của cửa hàng" class="lightbox-trigger">
+            </div>
+            <div class="khung-video-phai">
+                <video autoplay muted loop playsinline><source src="2.mp4" type="video/mp4"></video>
+            </div>
+        </section>
+
+        <section id="cau-chuyen" class="khoi-gioi-thieu">
+            <div class="noi-dung-chu">
+                <h2>STREET FOOD WITH SOUL</h2>
+                <p class="doan-van-nhan-manh">Không chỉ là những món ăn đường phố quen thuộc.</p>
+                <p>Chúng tôi gom góp tinh hoa của nguyên liệu tươi ngon và gửi gắm vào đó trọn vẹn "tâm hồn" người nấu. Để mỗi món ăn là một niềm vui nho nhỏ, là sợi dây kết nối hạnh phúc đến với bạn.</p>
+                <p>Hành trình từ một chiếc xe đẩy nhỏ cổng trường PTIT, Meals & Wheels nay đã trở thành điểm dừng chân quen thuộc của hàng ngàn bạn trẻ đam mê ẩm thực đường phố sạch.</p>
                 
-                <button class="nut-bam-menu">
-                    <a href="menu.html">Xem Thực Đơn</a>
-                </button>
-            </td>
+                <div class="vung-so-thong-ke">
+                    <div class="o-so-thong-ke">
+                        <h3 class="count-number" data-target="1500">0</h3>
+                        <p>Khách hàng/Tháng</p>
+                    </div>
+                    <div class="o-so-thong-ke">
+                        <h3 class="count-number" data-target="50">0</h3>
+                        <p>Món ngon đường phố</p>
+                    </div>
+                    <div class="o-so-thong-ke">
+                        <h3 class="count-number" data-target="100">0</h3>
+                        <p>% Sạch VietGAP</p>
+                    </div>
+                </div>
 
-            <td class="hinh-anh-gioi-thieu" width="50%">
-                <img src="https://tse3.mm.bing.net/th/id/OIP.ef0gcJpfVDltdCeRgcNH2QHaE8?pid=Api&P=0&h=180" width="45%"> 
-                <img src="https://tse2.mm.bing.net/th/id/OIP.xleZ6w-JLArAFuzkP-GUQgHaD4?pid=Api&P=0&h=180" width="45%">
-                <br>
-                <img src="https://atuankhang.vn/wp-content/uploads/2024/04/z5379754256366_af7d8bb3f08843b2eda69d55e76f41df.jpg" width="92%">
-            </td>
-        </tr>
-    </table>
+                <a href="menu.html" class="nut-xem-them">Khám Phá Thực Đơn Ngay</a>
+            </div>
+          
+            <div class="khoi-anh-gioi-thieu">
+                <div class="hang-anh-nho">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.ef0gcJpfVDltdCeRgcNH2QHaE8?pid=Api&P=0&h=180" alt="Ảnh món ăn 1" class="lightbox-trigger"> 
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.xleZ6w-JLArAFuzkP-GUQgHaD4?pid=Api&P=0&h=180" alt="Ảnh món ăn 2" class="lightbox-trigger">
+                </div>
+                <img src="https://atuankhang.vn/wp-content/uploads/2024/04/z5379754256366_af7d8bb3f08843b2eda69d55e76f41df.jpg" alt="Ảnh không gian quán lớn" class="anh-chu-dao lightbox-trigger">
+            </div>
+        </section>
 
-    <h1 class="tieu-de-mon-ngon">Món Ăn Nổi Bật</h1>    
-    
-    <table class="bang-mon-an">
-        <thead>
-            <tr>
-                <th><h3>Beef Burger</h3></th>
-                <th><h3>Tiramisu</h3></th>
-                <th><h3>Americano</h3></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <img src="https://png.pngtree.com/background/20230413/original/pngtree-food-burger-delicious-tempting-background-picture-image_2423373.jpg" alt="Burger">
-                </td>
-                <td>
-                    <img src="https://img.vietcetera.com/uploads/images/21-jun-2023/6.jpg" alt="Tiramisu">
-                </td>
-                <td>
-                    <img src="https://tse4.mm.bing.net/th/id/OIP.srTsz6i-CseZNqsYEi9KtQHaE8?pid=Api&P=0&h=180" alt="Cà phê">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <section class="khoi-gia-tri-cot-loi">
+            <div class="the-gia-tri">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Nguyên Liệu Sạch</h3>
+                <p>100% rau củ, thịt tươi được nhập mới tiêu thụ hết trong ngày.</p>
+            </div>
+            <div class="the-gia-tri">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Chế Biến Nhanh</h3>
+                <p>Hệ thống bếp tối ưu giúp món ăn luôn nóng hổi sau 5-7 phút.</p>
+            </div>
+            <div class="the-gia-tri">
+                <i class="fa-solid fa-face-smile"></i>
+                <h3>Phục Vụ Tử Tế</h3>
+                <p>Nụ cười và sự hài lòng của bạn là kim chỉ nam của chúng tôi.</p>
+            </div>
+            <div class="the-gia-tri">
+                <i class="fa-solid fa-tag"></i>
+                <h3>Giá Sinh Viên</h3>
+                <p>Phù hợp túi tiền nhưng chất lượng chuẩn nhà hàng.</p>
+            </div>
+        </section>
 
-    <hr>
-    <h2 id="danh-gia">Khách hàng nói gì về chúng tôi?</h2>
-    <ul>
-        <li>
-            <b>Tom:</b> "Đồ ăn ở đây ngon xỉu, ăn một lần là dính luôn! Tiramisu rất đúng vị."
-        </li>
-        <li>
-            <b>Jerry:</b> "Beef Burger đỉnh cao thật sự, hôm nào đi chơi về đói meo cũng phải tạt qua làm một cái mới ấm bụng."
-        </li>
-    </ul>
-    <hr>
-    <h2 id="lien-he">Thông tin & Giờ mở cửa</h2>
-    <p>Muốn thưởng thức thì phải biết đường mà tìm đến nhé:</p>
-    <ul>
-        <li><b>Địa điểm:</b> Khu vực quanh cổng Học viện PTIT, Hà Nội</li>
-        <li><b>Giờ mở cửa:</b> 08:00 Sáng - 10:00 Tối (Phục vụ xuyên trưa)</li>
-        <li><b>Hotline gọi món:</b> 0123 456 789</li>
-    </ul>
+        <section id="mon-noi-bat" class="khoi-mon-an-noi-bat">
+            <h2 class="tieu-de-chinh">MÓN ĂN BÁN CHẠY NHẤT</h2>
+            <p class="tieu-de-phu">Những ngôi sao làm nên thương hiệu Meals & Wheels</p>
+            
+            <div class="vung-slider-ngoai">
+                <div id="foodSlider">
+                    <div class="luoi-mon-an" id="renderTargetMonAn"></div>
+                </div>
+            </div>
+        </section>
 
-    <hr>
-    <h2>Đăng ký nhận Voucher giảm giá</h2>
-    <p>Để lại thông tin dưới đây nếu muốn nhận ưu đãi cho lần ăn tới:</p>
-    <form action="#" method="POST">
-        <label for="ho-ten">Tên của bạn:</label><br>
-        <input type="text" id="ho-ten" name="ho-ten" placeholder="Nhập tên..." required><br><br>
+        <section id="combo-uu-dai" class="khoi-combo-khuyen-mai">
+            <h2 class="tieu-de-chinh">COMBO TIẾT KIỆM CHO NHÓM</h2>
+            <div class="luoi-combo">
+                <div class="the-combo">
+                    <img src="https://stockdep.net/files/images/35895009.jpg" alt="Combo Độc Hành" class="anh-combo">
+                    <div class="noi-dung-combo">
+                        <h3>Combo "Độc Hành"</h3>
+                        <p class="chi-tiet-combo">1 Beef Burger + 1 Khoai tây chiên + 1 Coca Pepsi</p>
+                        <p class="gia-cu">85.000đ</p>
+                        <p class="gia-moi">69.000đ</p>
+                    </div>
+                </div>
 
-        <label for="email">Email liên hệ:</label><br>
-        <input type="email" id="email" name="email" placeholder="Nhập email..." required><br><br>
+                <div class="the-combo dac-biet">
+                    <img src="https://media.istockphoto.com/id/1410844723/vi/anh/b%C3%A1nh-m%C3%AC-k%E1%BA%B9p-ph%C3%B4-mai-ngon-ng%E1%BB%8Dt-%C4%83n-k%C3%A8m-v%E1%BB%9Bi-khoai-t%C3%A2y-chi%C3%AAn.jpg?s=612x612&w=0&k=20&c=zvg3SffX68_gZUD2eZTmed8knHaMVBBLmgAnrB2fsVI=" alt="Combo Đôi Bạn" class="anh-combo">
+                    <div class="noi-dung-combo">
+                        <h3>Combo "Đôi Bạn Cùng Tiến"</h3>
+                        <p class="chi-tiet-combo">2 Beef Burger + 2 khoai tây + 2 coca Đá</p>
+                        <p class="gia-cu">170.000đ</p>
+                        <p class="gia-moi">139.000đ</p>
+                    </div>
+                </div>
 
-        <label for="gop-y">Món muốn chúng tôi bán thêm:</label><br>
-        <textarea id="gop-y" name="gop-y" rows="4" cols="30" placeholder="Ghi chú vào đây..."></textarea><br><br>
+                <div class="the-combo">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop" alt="Combo PTIT" class="anh-combo">
+                    <div class="noi-dung-combo">
+                        <h3>Combo "Tụ Tập PTIT"</h3>
+                        <p class="chi-tiet-combo">3 Burger Tự Chọn + 2 Khoai Tây + 3 Đồ Uống Bất Kỳ</p>
+                        <p class="gia-cu">260.000đ</p>
+                        <p class="gia-moi">199.000đ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <button type="submit">Gửi thông tin luôn</button>
-    </form>
+        <section id="quy-trinh" class="khoi-quy-trinh-sach">
+            <h2 class="tieu-de-chinh">3 BƯỚC ĐẢM BẢO CHẤT LƯỢNG CLEAN-FOOD</h2>
+            <div class="cac-buoc-quy-trinh">
+                <div class="buoc-item">
+                    <span class="so-thu-tu">01</span>
+                    <h4>Tuyển Chọn Khắt Khe</h4>
+                    <p>Nguồn nguyên liệu đạt chuẩn VietGAP, tươi sạch, kiểm định rõ ràng mỗi sáng sớm.</p>
+                </div>
+                <div class="buoc-item">
+                    <span class="so-thu-tu">02</span>
+                    <h4>Bếp Kín Vệ Sinh</h4>
+                    <p>Khu vực chế biến luôn được khử trùng định kỳ, đầu bếp đeo găng tay và khẩu trang 100%.</p>
+                </div>
+                <div class="buoc-item">
+                    <span class="so-thu-tu">03</span>
+                    <h4>Đóng Gói Thân Thiện</h4>
+                    <p>Sử dụng hộp giấy phân hủy sinh học để bảo vệ môi trường và giữ trọn độ nóng.</p>
+                </div>
+            </div>
+        </section>
 
-       <hr>
-    <footer>
-        <p>Bản quyền © 2026 thuộc về Meals & Wheels. Xin đừng sao chép dưới mọi hình thức.</p>
+        <section id="doi-ngu" class="khoi-doi-ngu-dau-bep">
+            <h2 class="tieu-de-chinh">NGƯỜI THỔI HỒN VÀO MÓN ĂN</h2>
+            <div class="luoi-nhan-su">
+                <div class="the-nhan-su">
+                    <img src="https://i.pravatar.cc/150?img=60" alt="Nguyễn Thành Nam" class="anh-chan-dung lightbox-trigger">
+                    <h4>Nguyễn Thành Nam</h4>
+                    <p class="chuc-vu">Đầu Bếp Trưởng</p>
+                    <p class="tieu-su">Đam mê ẩm thực đường phố, hơn 5 năm kinh nghiệm nghiên cứu các loại sốt.</p>
+                </div>
+                <div class="the-nhan-su">
+                    <img src="https://i.pravatar.cc/150?img=47" alt="Trần Thu Thảo" class="anh-chan-dung lightbox-trigger">
+                    <h4>Trần Thu Thảo</h4>
+                    <p class="chuc-vu">Chuyên Viên Bánh Ngọt</p>
+                    <p class="tieu-su">Người tạo ra những chiếc Tiramisu "gây nghiện" làm tan chảy mọi thực khách.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="y-kien-khach" class="khoi-y-kien-khach-hang">
+            <h2 class="tieu-de-chinh">KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI?</h2>
+            <p class="tieu-de-phu">Cảm nhận thực tế từ các học viên</p>
+
+            <div class="luoi-danh-gia" id="containerDanhGia">
+                <div class="the-danh-gia">
+                    <p class="diem-sao">★★★★★</p>
+                    <p class="loi-binh"><i>"Đồ ăn ở đây ngon xỉu, ăn một lần là dính luôn! Tiramisu rất đúng vị béo ngậy không bị ngọt quá."</i></p>
+                    <hr class="vach-ngan">
+                    <div class="thong-tin-nguoi-dung">
+                        <span class="hinh-dai-dien">T</span>
+                        <div class="chu-thich-ten">
+                            <b>Tom</b><br>
+                            <span class="nhan-khach">Khách hàng thân thiết</span>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="the-danh-gia">
+                    <p class="diem-sao">★★★★★</p>
+                    <p class="loi-binh"><i>"Beef Burger đỉnh cao thật sự, hôm nào đi học về đói cũng phải tạt qua làm một cái mới ấm bụng!"</i></p>
+                    <hr class="vach-ngan">
+                    <div class="thong-tin-nguoi-dung">
+                        <span class="hinh-dai-dien">J</span>
+                        <div class="chu-thich-ten">
+                            <b>Jerry</b><br>
+                            <span class="nhan-khach">Cựu sinh viên PTIT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="khung-viet-danh-gia">
+                <h3>Chia sẻ trải nghiệm của bạn</h3>
+                <div id="starRatingSelect">
+                    <i class="fa-solid fa-star" data-value="1"></i>
+                    <i class="fa-solid fa-star" data-value="2"></i>
+                    <i class="fa-solid fa-star" data-value="3"></i>
+                    <i class="fa-solid fa-star" data-value="4"></i>
+                    <i class="fa-solid fa-star" data-value="5"></i>
+                </div>
+                <input type="text" id="reviewUser" placeholder="Tên của bạn..." required>
+                <textarea id="reviewContent" rows="3" placeholder="Nhập nhận xét của bạn tại đây..." required></textarea>
+                <button id="btnSubmitReview">Gửi Đánh Giá Ngay</button>
+            </div>
+        </section>
+
+        <section id="tin-tuc" class="khoi-tin-tuc-su-kien">
+            <h2 class="tieu-de-chinh">TIN TỨC & GÓC CHIA SẺ</h2>
+            <p class="tieu-de-phu">Cập nhật tin tức ẩm thực mới nhất</p>
+            <div class="luoi-bai-viet">
+                <article class="the-bai-viet">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.ef0gcJpfVDltdCeRgcNH2QHaE8?pid=Api&P=0&h=180" alt="Bí quyết làm nước sốt Burger đậm đà chuẩn vị Mỹ" class="anh-bai-viet lightbox-trigger">
+                    <h4>Bí quyết làm nước sốt Burger đậm đà chuẩn vị Mỹ</h4>
+                    <p class="tom-tat-bai-viet">Khám phá công thức độc quyền từ bếp trưởng Meals & Wheels giúp miếng thịt bò dậy mùi thơm...</p>
+                    <a href="#" class="duong-dan-doc-them">Đọc tiếp</a>
+                </article>
+                <article class="the-bai-viet">
+                    <img src="https://img.vietcetera.com/uploads/images/21-jun-2023/6.jpg" alt="Tiramisu - Chiếc bánh ngọt đại diện cho tình yêu nước Ý" class="anh-bai-viet lightbox-trigger">
+                    <h4>Tiramisu - Chiếc bánh ngọt đại diện cho tình yêu nước Ý</h4>
+                    <p class="tom-tat-bai-viet">Ý nghĩa ẩn sau cái tên "Tiramisu" và tại sao nó lại trở thành món tráng miệng được săn đón...</p>
+                    <a href="#" class="duong-dan-doc-them">Đọc tiếp</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="thu-vien">
+            <h2 class="tieu-de-chinh">KHOẢNH KHẮC MEALS & WHEELS</h2>
+            <p class="tieu-de-phu">Hình ảnh thực tế từ quán</p>
+            <div class="khung-chua-anh-cuon">
+                <img src="https://png.pngtree.com/png-clipart/20220125/original/pngtree-mid-autumn-festival-reunion-png-image_7211423.png" alt="Khoảnh khắc tụ họp đêm Trung Thu tại cổng trường Học viện" class="lightbox-trigger">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.xleZ6w-JLArAFuzkP-GUQgHaD4?pid=Api&P=0&h=180" alt="Cận cảnh thớ thịt nướng xèo xèo trên bếp lửa hồng" class="lightbox-trigger">
+                <img src="https://hatiencorp.vn/wp-content/uploads/2022/09/nha-hang-do-an-nhanh-fast-food-21.jpg" alt="Không gian tấp nập thực khách xếp hàng chờ mua đồ ăn nhanh" class="lightbox-trigger">
+                <img src="https://atuankhang.vn/wp-content/uploads/2024/04/z5379754256366_af7d8bb3f08843b2eda69d55e76f41df.jpg" alt="Xe đẩy Meals & Wheels lung linh ánh đèn lúc chập tối" class="lightbox-trigger">
+            </div>
+        </section>
+
+        <section id="lien-he" class="khoi-lien-he-va-voucher">
+            <div class="cot-thong-tin-trai">
+                <h2>Thông tin & Giờ mở cửa</h2>
+                <p>Muốn thưởng thức ẩm thực đường phố có tâm thì ghé ngay tọa độ:</p>
+                <ul class="danh-sach-lien-he">
+                    <li><b>Địa điểm:</b> Khu vực quanh cổng Học viện PTIT, Hà Đông, Hà Nội</li>
+                    <li><b>Giờ mở cửa:</b> 08:00 Sáng - 10:00 Tối (Cả tuần)</li>
+                    <li><b>Hotline đặt ship:</b> 0123 456 789</li>
+                    <li><b>Email góp ý:</b> lienhe@mealsandwheels.com</li>
+                </ul>
+                <div class="khung-nhung-ban-do">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.2925132859343!2d105.78010377592476!3d20.980907389422533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accdd86f5561%3A0xaae3f06e696de23d!2zSOG7Ygdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNowsplittingY2ggVmnhu4VuIHRow7RuZw!5e0!3m2!1svi!2s!4v1710000000000!5m2!1svi!2s" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="cot-nhan-voucher-phai">
+                <h2>Đăng ký nhận Voucher Giảm Giá</h2>
+                <p>Nhận ngay mã giảm giá 20% cho lần mua hàng tiếp theo bằng cách điền form:</p>
+                
+                <form action="#" method="POST" class="bieu-mau-voucher" id="voucherForm">
+                    <label for="nhap-ten">Tên của bạn:</label>
+                    <input type="text" id="nhap-ten" name="ho-ten" placeholder="Ví dụ: Tạ Xuân Bắc..." required>
+
+                    <label for="nhap-email">Email liên hệ:</label>
+                    <input type="email" id="nhap-email" name="email" placeholder="Ví dụ: student@ptit.edu.vn..." required>
+
+                    <label for="noi-dung-gop-y">Ý kiến đóng góp / Yêu cầu thêm món:</label>
+                    <textarea id="noi-dung-gop-y" name="gop-y" rows="4" placeholder="Bạn muốn chúng tôi cải tiến thêm điều gì?..."></textarea>
+
+                    <button type="submit" class="nut-gui-du-lieu">Gửi Thông Tin & Nhận Mã Ngay</button>
+                </form>
+
+                <div id="voucherResult"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="lightboxModal">
+        <span id="lightboxClose">×</span>
+        <img id="lightboxImg">
+        <div id="lightboxCaption"></div>
+    </div>
+
+    <footer class="chan-trang">
+        <div class="khung-chan-trang">
+            <p>© 2026 Meals & Wheels - Street Food Project. Bài tập lớn thiết kế Website.</p>
+            <div class="mang-xa-hoi">
+                <a href="#"><i class="fa-brands fa-facebook"></i> Facebook quán</a>
+                <a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i> Tiktok channel</a>
+            </div>
+        </div>
     </footer>
 
+    <script src="trang-chu.js"></script>
 </body>
 </html>
