@@ -1,14 +1,7 @@
 // =========================================================================
-// HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG (PTIT)
-// BÀI TẬP LỚN: XÂY DỰNG WEBSITE ĐỒ ĂN ĐƯỜNG PHỐ MEALS & WHEELS
-// FILE: trang-chu.js (Xử lý hiệu ứng giao diện trang chủ - Đã kéo dài hơn 500 dòng)
-// =========================================================================
-
-// =========================================================================
 // KHU VỰC 1: KHO DỮ LIỆU TẬP TRUNG PHỤ TRỢ (Quản lý động danh mục món ăn)
 // =========================================================================
 
-// Mảng chứa danh sách đầy đủ 6 món ăn để tự động bơm ra HTML, khắc phục lỗi trống màn hình
 var khoDuLieuMonAnTrangChu = [
     {
         maMon: "MON-001",
@@ -57,50 +50,83 @@ var khoDuLieuMonAnTrangChu = [
         giaBan: 15000,
         duongDanAnh: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop",
         moTaNgan: "Thịt xiên nướng cháy cạnh thơm lừng đẫm sốt mật ong rừng."
+    },
+    {
+        maMon: "MON-007",
+        tenMonAn: "Trà Sữa Nướng Thạch Ô Long",
+        phanLoai: "ĐỒ UỐNG",
+        giaBan: 32000,
+        duongDanAnh: "https://congthucphache.com/wp-content/uploads/2019/12/tra-sua-olong-1.jpg",
+        moTaNgan: "Vị trà đậm đà quyện sốt nướng caramen thơm ngậy, kèm thạch giòn dai."
+    },
+    {
+        maMon: "MON-008",
+        tenMonAn: "Trà Đào Cam Sả Mát Lạnh",
+        phanLoai: "ĐỒ UỐNG",
+        giaBan: 28000,
+        duongDanAnh: "https://img.meta.com.vn/Data/image/2021/05/20/tra-dao-cam-sa-2.jpg",
+        moTaNgan: "Vị trà thanh ngọt quyện cùng hương sả nồng nàn, cam tươi và đào miếng giòn sần sật."
+    },
+    {
+        maMon: "MON-009",
+        tenMonAn: "Bánh Croissant Trứng Muối",
+        phanLoai: "TRÁNG MIỆNG",
+        giaBan: 25000,
+        duongDanAnh: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600&auto=format&fit=crop",
+        moTaNgan: "Vỏ bánh ngàn lớp giòn rụm, bẻ đôi lớp nhân kim sa trứng muối chảy béo ngậy."
+    },
+    {
+        maMon: "MON-010",
+        tenMonAn: "Pudding Matcha Trân Châu",
+        phanLoai: "TRÁNG MIỆNG",
+        giaBan: 22000,
+        duongDanAnh: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?q=80&w=600&auto=format&fit=crop",
+        moTaNgan: "Pudding trà xanh mềm mịn như nhung, kết hợp trân châu đen ngọt bùi."
+    },
+    {
+        maMon: "MON-011",
+        tenMonAn: "Double Cheese Tôm Lớp",
+        phanLoai: "BURGER",
+        giaBan: 59000,
+        duongDanAnh: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop",
+        moTaNgan: "Nhân tôm biển băm bọc bột chiên xù giòn rụm, gấp đôi phô mai lát và sốt tartar thanh mát."
+    },
+    {
+        maMon: "MON-012",
+        tenMonAn: "Burger Heo Xông Khói BBQ",
+        phanLoai: "BURGER",
+        giaBan: 52000,
+        duongDanAnh: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=600&auto=format&fit=crop",
+        moTaNgan: "Thịt heo nướng giòn quyện cùng dải thịt ba rọi xông khói áp chảo thơm lừng và hành tây vòng."
     }
 ];
 
-// Biến toàn cục lưu số sao người dùng chọn khi bình luận
 var soSaoNguoiDungChon = 5;
 
 // =========================================================================
-// KHU VỰC 2: SỰ KIỆN KHỞI TẢI WINDOW ONLOAD
+// KHU VỰC 2: SỰ KIỆN KHỞI TẢI 
 // =========================================================================
 window.onload = function() {
-    console.log("Trang chủ Meals & Wheels đã khởi tải xong toàn bộ cấu trúc!");
     
-    // 1. Tự động đổ dữ liệu từ mảng JS ra ngoài HTML
     tuDongBomMonAnRaHtml();
     
-    // 2. Kích hoạt tính năng slider trượt ngang tự động liên tục
     khoiChaySliderTuDong();
     
-    // 3. Kích hoạt tính năng form voucher nhận mã quà tặng ngẫu nhiên
     khoiChayFormNhanVoucher();
     
-    // 4. Kích hoạt tính năng chấm điểm sao khi viết nhận xét
     khoiChayChonSaoDanhGia();
     
-    // 5. Kích hoạt nút bấm gửi bình luận động lên lưới
     khoiChayGuiBinhLuanDong();
     
-    // 6. Kích hoạt tính năng click ảnh phóng to thu nhỏ toàn màn hình (Lightbox)
-    khoiChayTrinhXemAnhLightbox();
-    
-    // 7. Chạy hiệu ứng đếm số tăng trưởng tự động cho dải thống kê
-    chayBoDemSoThongKeTuDong();
 };
 
 // =========================================================================
-// KHU VỰC 3: HÀM ĐỔ DỮ LIỆU ĐỘNG TỪ MẢNG JS VÀO THẺ HTML CHỦ QUẢN
+// KHU VỰC 3: HÀM ĐỔ DỮ LIỆU ĐỘNG 
 // =========================================================================
 function tuDongBomMonAnRaHtml() {
     var vungChuaHtmlMonAn = document.getElementById("renderTargetMonAn");
-    if (vungChuaHtmlMonAn === null) return;
+        var chuoiHtmlMonAn = "";
 
-    var chuoiHtmlMonAn = "";
-
-    // Duyệt mảng dữ liệu để gom chuỗi mã HTML thẻ món ăn
     khoDuLieuMonAnTrangChu.forEach(function(mon) {
         chuoiHtmlMonAn += `
             <article class="the-mon-an">
@@ -113,8 +139,7 @@ function tuDongBomMonAnRaHtml() {
         `;
     });
 
-    // Thuật toán x2 chuỗi nội dung để băng chuyền slider nối đuôi trượt vô hạn không bị hẫng
-    vungChuaHtmlMonAn.innerHTML = chuoiHtmlMonAn + chuoiHtmlMonAn;
+   vungChuaHtmlMonAn.innerHTML = chuoiHtmlMonAn + chuoiHtmlMonAn ; 
 }
 
 // =========================================================================
@@ -126,12 +151,7 @@ var trinhDinhThoiSlider;
 function khoiChaySliderTuDong() {
     var theKhungSlider = document.getElementById("foodSlider");
     var theLuoiMonAn = document.getElementById("renderTargetMonAn");
-    
-    if (theKhungSlider === null || theLuoiMonAn === null) return;
-
-    clearInterval(trinhDinhThoiSlider);
-
-    // Cứ sau 22 mili-giây dịch sang phải 1 pixel
+  
     trinhDinhThoiSlider = setInterval(function() {
         viTriCuonNgang = viTriCuonNgang + 1;
         
@@ -142,34 +162,18 @@ function khoiChaySliderTuDong() {
         theKhungSlider.scrollLeft = viTriCuonNgang;
     }, 22);
 
-    // Chuột rê vào -> dừng trượt
+
     theKhungSlider.onmouseenter = function() {
         clearInterval(trinhDinhThoiSlider);
     };
 
-    // Chuột di chuyển ra ngoài -> tiếp tục trượt tự động
     theKhungSlider.onmouseleave = function() {
         khoiChaySliderTuDong();
     };
 }
 
 // =========================================================================
-// KHU VỰC 5: BIẾN THANH ĐIỀU HƯỚNG MENU THÀNH CỐ ĐỊNH KHI CUỘN (STICKY)
-// =========================================================================
-window.onscroll = function() {
-    var theThanhMenu = document.querySelector(".thanh-dieu-huong");
-    if (theThanhMenu === null) return;
-
-    // Nếu người dùng cuộn xuống quá 160px tính từ đỉnh trang web
-    if (window.scrollY > 160) {
-        theThanhMenu.classList.add("sticky");
-    } else {
-        theThanhMenu.classList.remove("sticky");
-    }
-};
-
-// =========================================================================
-// KHU VỰC 6: FORM ĐĂNG KÝ VOUCHER KHUYẾN MÃI VÀ SINH MÃ TOÁN HỌC NGẪU NHIÊN
+// KHU VỰC:5 FORM ĐĂNG KÝ VOUCHER KHUYẾN MÃI VÀ SINH MÃ NGẪU NHIÊN
 // =========================================================================
 function khoiChayFormNhanVoucher() {
     var theFormVoucher = document.getElementById("voucherForm");
@@ -178,16 +182,14 @@ function khoiChayFormNhanVoucher() {
     if (theFormVoucher === null || theHopKetQuaVoucher === null) return;
 
     theFormVoucher.onsubmit = function(suKienNutGui) {
-        suKienNutGui.preventDefault(); // Chặn reload trang mặc định
+        suKienNutGui.preventDefault(); 
 
         var chuoiTenNguoiDung = document.getElementById("nhap-ten").value;
         var chuoiEmailNguoiDung = document.getElementById("nhap-email").value;
 
-        // Tạo chuỗi số ngẫu nhiên từ 1000 đến 9999
         var soNgauNhienBonChuSo = Math.floor(1000 + Math.random() * 9000);
         var maVoucherChungThuc = "PTIT-" + soNgauNhienBonChuSo;
 
-        // Vẽ hộp thông báo kết quả chèn thẳng xuống dưới Form
         theHopKetQuaVoucher.innerHTML = `
             <div style="border: 2px dashed #ff6b6b; padding: 20px; background-color: #fff3f3; border-radius: 8px; margin-top: 15px;">
                 <h4 style="color: #ff6b6b; margin-bottom: 10px; font-size: 16px;">🎉 ĐĂNG KÝ THÀNH CÔNG VOUCHER ƯU ĐÃI!</h4>
@@ -196,9 +198,8 @@ function khoiChayFormNhanVoucher() {
                 <p style="margin: 8px 0 0 0; font-size: 12px; color: #555; font-style: italic;">* Chi tiết voucher đã được gửi về hòm thư điện tử: ${chuoiEmailNguoiDung}.</p>
             </div>
         `;
-
         theHopKetQuaVoucher.style.display = "block";
-        theFormVoucher.reset(); // Làm trống form
+        theFormVoucher.reset(); 
     };
 }
 
@@ -207,14 +208,12 @@ function khoiChayFormNhanVoucher() {
 // =========================================================================
 function khoiChayChonSaoDanhGia() {
     var danhSachCacNgoiSao = document.querySelectorAll("#starRatingSelect i");
-    if (danhSachCacNgoiSao.length === 0) return;
 
     danhSachCacNgoiSao.forEach(function(ngoiSaoDonLe) {
         ngoiSaoDonLe.onclick = function() {
             var diemSoSaoBam = parseInt(this.getAttribute("data-value"), 10);
             soSaoNguoiDungChon = diemSoSaoBam;
 
-            // Tô màu vàng cho các sao bé hơn hoặc bằng điểm bấm, xóa màu các sao lớn hơn
             danhSachCacNgoiSao.forEach(function(saoKiemTra) {
                 var giaTriCuaSaoKiemTra = parseInt(saoKiemTra.getAttribute("data-value"), 10);
                 if (giaTriCuaSaoKiemTra <= diemSoSaoBam) {
@@ -248,15 +247,17 @@ function khoiChayGuiBinhLuanDong() {
             return;
         }
 
-        // Vẽ chuỗi ký tự hình sao vàng/sao rỗng dựa trên điểm chọn
         var chuoiSaoHienThi = "";
         for (var i = 1; i <= 5; i++) {
-            chuoiSaoHienThi += (i <= soSaoNguoiDungChon) ? "★" : "☆";
+            if (i <= soSaoNguoiDungChon) {
+                chuoiSaoHienThi = chuoiSaoHienThi + "★";
+            } else {
+                    chuoiSaoHienThi = chuoiSaoHienThi + "☆";
+            }
         }
 
         var chuCaiDauTien = chuoiTenKhach.charAt(0).toUpperCase();
 
-        // Tạo Node phần tử div bình luận mới
         var theDanhGiaMoi = document.createElement("div");
         theDanhGiaMoi.className = "the-danh-gia";
         theDanhGiaMoi.innerHTML = `
@@ -264,7 +265,7 @@ function khoiChayGuiBinhLuanDong() {
             <p class="loi-binh"><i>"${chuoiNoiDungKhach}"</i></p>
             <hr class="vach-ngan">
             <div class="thong-tin-nguoi-dung">
-                <span class="hinh-dai-dien" style="background-color: #ffb830;">${chuCaiDauTien}</span>
+                <span class="hinh-dai-dien" style="background-color: #9e0505;">${chuCaiDauTien}</span>
                 <div class="chu-thich-ten">
                     <b>${chuoiTenKhach}</b><br>
                     <span class="nhan-khach">Đánh giá trực tuyến từ sinh viên</span>
@@ -272,78 +273,15 @@ function khoiChayGuiBinhLuanDong() {
             </div>
         `;
 
-        // Chèn chèn lên vị trí đầu tiên của lưới bình luận
         vungChuaCacTheDanhGia.insertBefore(theDanhGiaMoi, vungChuaCacTheDanhGia.firstChild);
 
-        // Xóa trống các ô nhập liệu để khách sau điền tiếp
         oNhapTenKhach.value = "";
         oNhapNoiDungKhach.value = "";
         
         var tatCaNgoiSao = document.querySelectorAll("#starRatingSelect i");
-        tatCaNgoiSao.forEach(s => s.classList.add("active"));
-        soSaoNguoiDungChon = 5;
+        tatCaNgoiSao.forEach(s => s.classList.remove("active")); 
+        soSaoNguoiDungChon = 0; 
 
         alert("🎉 Đánh giá của bạn đã được xuất bản công khai lên lưới!");
     };
-}
-
-// =========================================================================
-// KHU VỰC 9: TRÌNH PHÓNG TO HÌNH ẢNH TOÀN MÀN HÌNH (MEDIA LIGHTBOX)
-// =========================================================================
-function khoiChayTrinhXemAnhLightbox() {
-    var oCuaSoModalLightbox = document.getElementById("lightboxModal");
-    var oAnhNoiDungPhongTo = document.getElementById("lightboxImg");
-    var oChuThichAnhLightbox = document.getElementById("lightboxCaption");
-    var nutDongLightbox = document.getElementById("lightboxClose");
-
-    if (oCuaSoModalLightbox === null || oAnhNoiDungPhongTo === null) return;
-
-    // Sử dụng kỹ thuật bắt sự kiện click động: Khi click vào bất kỳ đâu trên trang web
-    document.body.addEventListener("click", function(suKienClick) {
-        var theAnhDuocBam = suKienClick.target;
-        
-        // Nếu phần tử click vào chứa class 'lightbox-trigger' hoặc 'anh-mon-an' hoặc nằm trong dải ảnh cuộn
-        if (theAnhDuocBam.classList.contains("lightbox-trigger") || theAnhDuocBam.classList.contains("anh-mon-an")) {
-            oCuaSoModalLightbox.style.display = "block";
-            oAnhNoiDungPhongTo.src = theAnhDuocBam.src;
-            oChuThichAnhLightbox.textContent = theAnhDuocBam.alt || "Hình ảnh không gian ẩm thực Meals & Wheels";
-        }
-    });
-
-    function dongCuaSoLightbox() {
-        oCuaSoModalLightbox.style.display = "none";
-    }
-
-    if (nutDongLightbox !== null) nutDongLightbox.onclick = dongCuaSoLightbox;
-    
-    oCuaSoModalLightbox.onclick = function(e) {
-        if (e.target === oCuaSoModalLightbox) dongCuaSoLightbox();
-    };
-}
-
-// =========================================================================
-// KHU VỰC 10: HÀM HIỆU ỨNG ĐẾM SỐ TĂNG TRƯỞNG TỰ ĐỘNG (INTERACTIVE COUNTER)
-// =========================================================================
-function chayBoDemSoThongKeTuDong() {
-    var mangCacTheSoThongKe = document.querySelectorAll(".count-number");
-    if (mangCacTheSoThongKe.length === 0) return;
-
-    mangCacTheSoThongKe.forEach(function(theSoDonLe) {
-        var giaTriDichToiDa = parseInt(theSoDonLe.getAttribute("data-target"), 10);
-        if (isNaN(giaTriDichToiDa)) return;
-
-        var conSoChayBatDau = 0;
-        var buocTangMoiNhip = Math.ceil(giaTriDichToiDa / 50);
-
-        var trinhDinhThoiBoDem = setInterval(function() {
-            conSoChayBatDau = conSoChayBatDau + buocTangMoiNhip;
-            
-            if (conSoChayBatDau >= giaTriDichToiDa) {
-                theSoDonLe.textContent = giaTriDichToiDa.toLocaleString() + (giaTriDichToiDa === 100 ? "%" : "+");
-                clearInterval(trinhDinhThoiBoDem);
-            } else {
-                theSoDonLe.textContent = conSoChayBatDau.toLocaleString() + "+";
-            }
-        }, 30); 
-    });
 }
